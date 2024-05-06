@@ -114,11 +114,23 @@ define haproxy::logforward (
       $order = "25-${defaults}-${section_name}-00"
     }
   }
+  
+  $parameters = {
+    'section_name'             => $section_name,
+    'bind'                     => $bind,
+    'ipaddress'                => $ipaddress,
+    'ports'                    => $ports,
+    'mode'                     => $mode,
+    'description'              => $description,
+    'options'                  => $options,
+    '_sort_options_alphabetic' => $_sort_options_alphabetic,
+  }
+  
   # Template uses: $section_name, $ipaddress, $ports, $options
   concat::fragment { "${instance_name}-${section_name}_log-forward_block":
     order   => $order,
     target  => $_config_file,
-    content => template('haproxy/haproxy_log-forward_block.epp'),
+    content => epp('haproxy/haproxy_log-forward_block.epp', $parameters),
   }
 
   if $configure_ring_buffer {
