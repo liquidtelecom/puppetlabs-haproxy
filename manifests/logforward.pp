@@ -117,6 +117,7 @@ define haproxy::logforward (
   
   $parameters = {
     'section_name'             => $section_name,
+    'dgram_bind'               => $dgram_bind,
     'bind'                     => $bind,
     'ipaddress'                => $ipaddress,
     'ports'                    => $ports,
