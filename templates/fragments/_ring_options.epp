@@ -12,7 +12,6 @@
 <% } -%>
 <% if String(type($ring_options, 'generalized')).index('Hash') == 0 { -%>
 <%= epp('haproxy/haproxy_options_sorting.epp', { 'options' => $ring_options, 'option_order' => $option_order }) -%>
-<% } -%>
 <% } elsif String(type($ring_options, 'generalized')).index('Array') == 0 { -%>
 <% $options.each |$option|  { -%>
 <%= epp('haproxy/haproxy_options_sorting.epp', { 'options' => $ring_options, 'option_order' => $option_order }) -%>
