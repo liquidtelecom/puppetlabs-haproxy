@@ -124,6 +124,7 @@ define haproxy::logforward (
     'mode'                     => $mode,
     'description'              => $description,
     'options'                  => $options,
+    'ring_options'             => $ring_options,
     '_sort_options_alphabetic' => $_sort_options_alphabetic,
   }
   
@@ -138,7 +139,7 @@ define haproxy::logforward (
     concat::fragment { "${instance_name}-${section_name}_log-forward-ring":
       order   => $order,
       target  => $_config_file,
-      content => template('haproxy/haproxy_ring_block.erb'),
+      content => epp('haproxy/haproxy_ring_block.erb', $parameters),
     }
   }
 

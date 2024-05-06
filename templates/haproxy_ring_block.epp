@@ -1,0 +1,3 @@
+
+ring <%= $section_name %>
+<%= epp('haproxy/fragments/_ring_options.epp', { 'ring_options' => $ring_options, '_sort_options_alphabetic' => $_sort_options_alphabetic }) -%>

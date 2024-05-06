@@ -1,0 +1,19 @@
+<% if $_sort_options_alphabetic == true { -%>
+<% $option_order = {} -%>
+<% } else { -%>
+<% $option_order = {
+  'description' => -1,
+  'format' => 2,
+  'maxlen' => 3,
+  'size' => 4,
+  'option' => 5,
+  'server' => 100,
+} -%>
+<% } -%>
+<% if String(type($ring_options, 'generalized')).index('Array') == 0 { -%>
+<% $ring_options.each |$option|  { -%>
+<%= epp('haproxy/haproxy_options_sorting.epp', { 'options' => $option, 'option_order' => $option_order }) -%>
+<% } -%>
+<% } elsif String(type($options, 'generalized')).index('Hash') == 0 { -%>
+<%= epp('haproxy/haproxy_options_sorting.epp', { 'options' => $option, 'option_order' => $option_order }) -%>
+<% } -%>
