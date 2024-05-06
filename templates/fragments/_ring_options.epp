@@ -17,3 +17,4 @@
 <% $options.each |$option|  { -%>
 <%= epp('haproxy/haproxy_options_sorting.epp', { 'options' => $ring_options, 'option_order' => $option_order }) -%>
 <% } -%>
+<% } -%>
