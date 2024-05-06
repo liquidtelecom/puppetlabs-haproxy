@@ -118,7 +118,7 @@ define haproxy::logforward (
   concat::fragment { "${instance_name}-${section_name}_log-forward_block":
     order   => $order,
     target  => $_config_file,
-    content => template('haproxy/haproxy_log-forward_block.erb'),
+    content => template('haproxy/haproxy_log-forward_block.epp'),
   }
 
   if $configure_ring_buffer {

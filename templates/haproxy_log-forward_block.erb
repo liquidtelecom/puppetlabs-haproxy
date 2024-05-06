@@ -1,5 +1,0 @@
-
-log-forward <%= @section_name %>
-<%= scope.function_template(['haproxy/fragments/_dgram-bind.erb']) -%>
-<%= epp('haproxy/fragments/_bind.epp', {'bind' => @bind, 'ipaddress' => @ipaddress, 'ports' => @ports, 'bind_options' => @bind_options }) -%>
-<%= epp('haproxy/fragments/_options.epp', { 'options' => @options, '_sort_options_alphabetic' => @_sort_options_alphabetic }) -%>
