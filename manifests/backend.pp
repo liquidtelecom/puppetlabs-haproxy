@@ -19,7 +19,7 @@
 #
 # @param mode
 #   The mode of operation for the backend service. Valid values are undef,
-#    'tcp', 'http', and 'health'.
+#    'tcp', 'http', 'log', and 'health'.
 #
 # @param description
 #   Allows to add a sentence to describe the related object in the HAProxy HTML
@@ -70,7 +70,7 @@
 # Jeremy Kitchen <jeremy@nationbuilder.com>
 #
 define haproxy::backend (
-  Optional[Enum['tcp', 'http', 'health']] $mode                     = undef,
+  Optional[Enum['tcp', 'http', 'log', 'health']] $mode              = undef,
   Boolean                                 $collect_exported         = true,
   Variant[Hash, Array[Hash]]              $options                  = {
     'balance' => 'roundrobin',
