@@ -102,18 +102,9 @@ define haproxy::logforward (
     $_config_file = pick($config_file, inline_template($haproxy::params::config_file_tmpl))
   }
 
-  include haproxy::globals
-  $_sort_options_alphabetic = pick($sort_options_alphabetic, $haproxy::globals::sort_options_alphabetic)
 
-  if $defaults == undef {
-    $order = "15-${section_name}-00"
-  } else {
-    if $defaults_use_backend and has_key($options, 'default_backend') {
-      $order = "25-${defaults}-${options['default_backend']}-00-${section_name}"
-    } else {
-      $order = "25-${defaults}-${section_name}-00"
-    }
-  }
+  $order = "15-${section_name}-00"
+
   
   $parameters = {
     'section_name'             => $section_name,
@@ -123,7 +114,7 @@ define haproxy::logforward (
     'ports'                    => $ports,
     'options'                  => $options,
     'ring_options'             => $ring_options,
-    '_sort_options_alphabetic' => $_sort_options_alphabetic,
+    '_sort_options_alphabetic' => false,
   }
   
   # Template uses: $section_name, $ipaddress, $ports, $options
