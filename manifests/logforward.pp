@@ -121,8 +121,6 @@ define haproxy::logforward (
     'bind'                     => $bind,
     'ipaddress'                => $ipaddress,
     'ports'                    => $ports,
-    'mode'                     => $mode,
-    'description'              => $description,
     'options'                  => $options,
     'ring_options'             => $ring_options,
     '_sort_options_alphabetic' => $_sort_options_alphabetic,
